@@ -6,6 +6,7 @@ from SPARQLWrapper import SPARQLWrapper
 """
 TODO:
 refactoring and testing
+proper logging rather than stdout prints
 generalize to other end-point type or other RDF distribution types
 
 LIMITATIONS:
