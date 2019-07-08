@@ -71,5 +71,10 @@ def get_endpoint(url, route, conditions):
         if result:
             return result
 
-print(get_endpoint(URIRef('https://demofdp1.fairdata.solutions/fdp'),
-             fdp_route, use_conditions))
+#print(get_endpoint(URIRef('https://demofdp1.fairdata.solutions/fdp'), fdp_route, use_conditions))
+
+result = get_endpoint(URIRef('https://demofdp1.fairdata.solutions/fdp'), fdp_route, use_conditions)
+print(result)
+# Write output to file
+with open('output.txt', 'w') as f:
+    f.write(result)
