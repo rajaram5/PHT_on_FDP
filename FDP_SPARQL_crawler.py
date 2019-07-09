@@ -2,6 +2,7 @@ import rdflib
 from pprint import pprint
 from rdflib import RDFS, URIRef, Literal
 from SPARQLWrapper import SPARQLWrapper
+import os
 
 """
 TODO:
@@ -74,6 +75,7 @@ def get_endpoint(url, route, conditions):
 #print(get_endpoint(URIRef('https://demofdp1.fairdata.solutions/fdp'), fdp_route, use_conditions))
 
 result = get_endpoint(URIRef('https://demofdp1.fairdata.solutions/fdp'), fdp_route, use_conditions)
+print(os.environ.get("DATABASE_URI"))
 print(result)
 # Write output to file
 with open('output.txt', 'w') as f:
