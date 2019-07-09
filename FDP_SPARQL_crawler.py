@@ -75,7 +75,9 @@ def get_endpoint(url, route, conditions):
 #print(get_endpoint(URIRef('https://demofdp1.fairdata.solutions/fdp'), fdp_route, use_conditions))
 
 result = get_endpoint(URIRef('https://demofdp1.fairdata.solutions/fdp'), fdp_route, use_conditions)
-print(os.environ.get("DATABASE_URI"))
+print("DATABASE_URI : " + os.environ.get("DATABASE_URI"))
+print("database_uri : " + os.environ.get("database_uri"))
+print("endpointUrl : " + os.environ.get("endpointUrl"))
 print(result)
 # Write output to file
 with open('output.txt', 'w') as f:
