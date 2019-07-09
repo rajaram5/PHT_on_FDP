@@ -72,12 +72,12 @@ def get_endpoint(url, route, conditions):
         if result:
             return result
 
-#print(get_endpoint(URIRef('https://demofdp1.fairdata.solutions/fdp'), fdp_route, use_conditions))
+#Get fdp uri from node envir variable
+fdp_uri = str(os.environ.get("DATABASE_URI"))
+print("fdp_uri :" + fdp_uri)
 
-result = get_endpoint(URIRef('https://demofdp1.fairdata.solutions/fdp'), fdp_route, use_conditions)
-print("DATABASE_URI : " + os.environ.get("DATABASE_URI"))
-print("database_uri : " + os.environ.get("database_uri"))
-print("endpointUrl : " + os.environ.get("endpointUrl"))
+result = get_endpoint(URIRef(fdp_uri), fdp_route, use_conditions)
+
 print(result)
 # Write output to file
 with open('output.txt', 'w') as f:
