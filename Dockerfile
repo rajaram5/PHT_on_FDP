@@ -3,8 +3,8 @@ FROM python:3.7
 WORKDIR /usr/src/app
 
 #COPY requirements.txt /requirements.txt
-COPY ./ /
+COPY ./ /usr/src/app
 
-RUN pip install -r requirements.txt
+RUN pip install -r  /usr/src/app/requirements.txt
 
-CMD ["python", "PatientCountTrain.py"]
+CMD ["python", "/usr/src/app/PatientCountTrain.py"]
