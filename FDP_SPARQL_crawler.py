@@ -63,22 +63,16 @@ def get_endpoint(url, route, conditions):
     leads = list(g.objects(None,URIRef(route_predicate)))
     print("leads:")
     pprint(leads)
+
     if len(route) == 0:
         if len(leads) > 0:
             return test_sparql_access(leads)
         return
+
     for i in leads:
-        result = get_endpoint(i, route.copy(), conditions.copy())
+        try:
+            result = get_endpoint(i, route.copy(), conditions.copy())
+        except:
+            print("Error in url :" + i)
         if result:
             return result
-
-#Get fdp uri from node envir variable
-fdp_uri = str(os.environ.get("DATABASE_URI"))
-print("fdp_uri :" + fdp_uri)
-
-result = get_endpoint(URIRef(fdp_uri), fdp_route, use_conditions)
-
-print(result)
-# Write output to file
-with open('output.txt', 'w') as f:
-    f.write(result)

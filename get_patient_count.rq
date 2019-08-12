@@ -1,0 +1,19 @@
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX rdc: <http://rdf.biosemantics.org/ontologies/rd-connect/>
+
+SELECT  (COUNT (DISTINCT ?person) AS ?numberOfPatient) WHERE {
+
+    VALUES ?phenotype {obo:HP_0001249}
+
+	?person a obo:NCBITaxon_9606;
+            obo:RO_0000087 ?personRole;
+            rdc:59e1324d_567b_42e1_bc88_203004e660da ?personDisplays.
+
+    ?personRole a obo:OBI_0000093.
+
+    ?personDisplays a ?phenotypeValue
+
+    FILTER (?phenotypeValue = ?phenotype)
+
+}
