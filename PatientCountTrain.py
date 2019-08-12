@@ -28,7 +28,7 @@ use_conditions = [[],
 #Get fdp uri from node envir variable
 fdp_uri = os.environ.get("DATABASE_URI")
 if fdp_uri is None:
-    fdp_uri = "http://136.243.4.200:8090/fdp"
+    fdp_uri = "http://136.243.4.200:8092/fdp"
 else:
     fdp_uri = str(fdp_uri)
 
