@@ -29,6 +29,9 @@ use_conditions = [[],
 #Get fdp uri from node envir variable
 fdp_uri = str(os.environ.get("DATABASE_URI"))
 print("fdp_uri :" + fdp_uri)
+if not fdp_uri:
+    fdp_uri = "https://demofdp1.fairdata.solutions/fdp"
+
 
 sparql_endpoint = FDP_SPARQL_crawler.get_endpoint(URIRef(fdp_uri), fdp_route, use_conditions)
 
