@@ -36,10 +36,13 @@ print("fdp_uri :" + fdp_uri)
 
 sparql_endpoint = FDP_SPARQL_crawler.get_endpoint(URIRef(fdp_uri), fdp_route, use_conditions)
 
+print("sparql_endpoint :" + sparql_endpoint)
+
 if sparql_endpoint:
     print(sparql_endpoint)
     sparql = SPARQLWrapper(sparql_endpoint)
     query = open('get_patient_count.rq', 'r').read()
+    print("query :" + query)
     sparql.setQuery(query)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()

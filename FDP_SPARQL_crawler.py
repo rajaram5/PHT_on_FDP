@@ -14,25 +14,25 @@ returns only a single end-point even if multiple are available
 """
 
 # FDP semantics (alternative implementation: crawl any link for dcat:Dataset)
-fdp_route = ['http://www.re3data.org/schema/3-0#dataCatalog',
-             'http://www.w3.org/ns/dcat#dataset',
-             'http://www.w3.org/ns/dcat#distribution',
-             'http://www.w3.org/ns/dcat#accessURL']
+# fdp_route = ['http://www.re3data.org/schema/3-0#dataCatalog',
+#              'http://www.w3.org/ns/dcat#dataset',
+#              'http://www.w3.org/ns/dcat#distribution',
+#              'http://www.w3.org/ns/dcat#accessURL']
 
 # specify optional data use conditions at each FDP level
-use_conditions = [[],
-                  [],
-                  [(None,
-                    URIRef('http://purl.org/dc/terms/license'),
-                    URIRef('http://purl.org/NET/rdflicense/MIT1.0')),
-                    (None,
-                    URIRef('http://www.w3.org/ns/dcat#theme'),
-                    URIRef('http://dbpedia.org/resource/Disease_registry'))
-                  ],
-                  [(None,
-                    URIRef('http://www.w3.org/ns/dcat#mediaType'),
-                    Literal('text/turtle'))]
-                 ]
+# use_conditions = [[],
+#                   [],
+#                   [(None,
+#                     URIRef('http://purl.org/dc/terms/license'),
+#                     URIRef('http://purl.org/NET/rdflicense/MIT1.0')),
+#                     (None,
+#                     URIRef('http://www.w3.org/ns/dcat#theme'),
+#                     URIRef('http://dbpedia.org/resource/Disease_registry'))
+#                   ],
+#                   [(None,
+#                     URIRef('http://www.w3.org/ns/dcat#mediaType'),
+#                     Literal('text/turtle'))]
+#                  ]
 
 def test_sparql_access(urls):
     """Return the first of the urls that gives a SPARQL response """

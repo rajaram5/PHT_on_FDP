@@ -2,3 +2,5 @@
 \.idea/
 
 output\.txt
+
+__pycache__/
