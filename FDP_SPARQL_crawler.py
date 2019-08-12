@@ -50,6 +50,7 @@ def get_endpoint(url, route, conditions):
     """Apply a minimal set of FDP/DCAT semantics to crawl through a FDP and
     find and return any available SPARQL end-points."""
     g=rdflib.Graph()
+    print("FDP url : " + url)
     g.load(url)
 
     for c in conditions.pop(0):
