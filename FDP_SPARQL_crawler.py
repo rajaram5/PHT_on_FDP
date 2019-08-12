@@ -2,7 +2,6 @@ import rdflib
 from pprint import pprint
 from rdflib import RDFS, URIRef, Literal
 from SPARQLWrapper import SPARQLWrapper
-import os
 
 """
 TODO:

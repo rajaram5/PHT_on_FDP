@@ -1,8 +1,7 @@
-from rdflib import RDFS, URIRef, Literal
-from SPARQLWrapper import SPARQLWrapper, N3, JSON
+from rdflib import URIRef, Literal
+from SPARQLWrapper import SPARQLWrapper, JSON
 import os
 import FDP_SPARQL_crawler
-from rdflib import Graph
 
 # FDP semantics (alternative implementation: crawl any link for dcat:Dataset)
 fdp_route = ['http://www.re3data.org/schema/3-0#dataCatalog',
