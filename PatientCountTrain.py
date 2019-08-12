@@ -39,6 +39,7 @@ if sparql_endpoint:
     sparql.setQuery(query)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
+    print(results)
     # Write output to file
     with open('output.txt', 'w') as f:
         f.write(str(results))

@@ -5,4 +5,4 @@ COPY FDP_SPARQL_crawler.py /FDP_SPARQL_crawler.py
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "FDP_SPARQL_crawler.py"]
+CMD ["python", "PatientCountTrain.py"]
