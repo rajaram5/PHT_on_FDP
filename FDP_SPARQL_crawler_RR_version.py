@@ -17,6 +17,11 @@ class FDP_SPARQL_crawler_RR_version:
 
     gg = rdflib.Graph()
 
+    # FDP semantics (alternative implementation: crawl any link for dcat:Dataset)
+    fdp_route = ['http://www.re3data.org/schema/3-0#dataCatalog',
+                 'http://www.w3.org/ns/dcat#dataset',
+                 'http://www.w3.org/ns/dcat#distribution']
+
 
     def test_sparql_access(self, urls):
         """Return the first of the urls that gives a SPARQL response """
@@ -32,62 +37,94 @@ class FDP_SPARQL_crawler_RR_version:
 
 
 
-    def get_endpoint(self, url, route, conditions):
+    def get_endpoint(self, url, conditions):
         """Apply a minimal set of FDP/DCAT semantics to crawl through a FDP and
         find and return any available SPARQL end-points."""
 
-        gp = rdflib.Graph()
-        self._load_graph(self.gg, url)
+        # Load FDP content to graph
+        self.gg = self._getGraph(url)
 
-        if not self.is_graph_matches_condition(self.gg, conditions.pop(0)):
+        # Check if fdp content mactches use condition, if not return None
+        if not self._doesGraphMatchesCondition(self.gg, conditions.pop(0)):
             return None
 
-        for predicate in route:
-
-            graphs = self._get_object_graphs(predicate)
+        """
+        Loop through FDP metadata layers to get triple store url
+        """
+        for predicate in self.fdp_route:
+            # Get childern layers as graphs
+            graphs = self._getObjectGraphs(predicate)
             condition = conditions.pop(0)
+
+            # Empty gobal graph
             self.gg = rdflib.Graph()
             for g in graphs:
-                if self.is_graph_matches_condition(g, condition):
+                if self._doesGraphMatchesCondition(g, condition):
+                    # Add content of childern layer which matches use condition
                      self.gg =  self.gg + g
+                else:
+                    print('mismatched condition')
 
-        for sub,pred,obj in self.gg.triples( (None,  URIRef('http://www.w3.org/ns/dcat#accessURL'), None) ):
-            print ("%s is triplestore url "%obj)
+        """
+        Get SPARQL endpoint url from the gobal graph. Note dat we written first SPARQL endpoint. In case of
+        multiple endpoints URLs we ignore the rest
+        """
+        for sub, pred, obj in self.gg.triples( (None,  URIRef('http://www.w3.org/ns/dcat#accessURL'), None) ):
             return obj
 
 
 
 
-    def is_graph_matches_condition(self, graph, conditions):
+    def _doesGraphMatchesCondition(self, graph, conditions):
+
+        """
+        Check if the content of the graph matches conditions. Return true if content matches conditions
+
+        :param graph: RDF graph
+        :param conditions: List of conditions
+        :return:    True or False
+        """
 
         if conditions == []:
             return True
 
         for condition in conditions:
+            # Get triples matches condition
             c_list = list(graph.triples(condition))
 
             if len(c_list) == 0:
-                print('mismatched condition')
                 return False
-
         return True
 
 
-    def _get_object_graphs(self, predicate):
+    def _getObjectGraphs(self, predicate):
+        """
+        For a given predicate get all objects of the predicate and load content of the object url(s) to graph(s).
 
+        :param predicate: Predicate url
+        :return:    List of graph(s)
+        """
         urls = list(self.gg.objects(None,URIRef(predicate)))
-
         graphs = []
 
         for url in urls:
-            graph = rdflib.Graph()
-            self._load_graph(graph, url)
+            graph = self._getGraph(url)
             graphs.append(graph)
+
         return graphs
 
-    def _load_graph(self, graph, url):
+
+    def _getGraph(self, url):
+        """
+        Load content of a url to graph
+
+        :param url: Content url
+        :return: Graph
+        """
         print("Load content of : " + url)
+        graph = rdflib.Graph()
         graph.load(url)
+        return graph
 
 
 
