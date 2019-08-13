@@ -20,6 +20,9 @@ use_conditions = [[],
                     URIRef('http://dbpedia.org/resource/Disease_registry'))
                    ],
                   [(None,
+                    URIRef('http://www.w3.org/ns/dcat#accessURL'),
+                    None),
+                   (None,
                     URIRef('http://www.w3.org/ns/dcat#mediaType'),
                     Literal('text/turtle'))]
                   ]
