@@ -72,7 +72,8 @@ def get_endpoint(url, route, conditions):
     for i in leads:
         try:
             result = get_endpoint(i, route.copy(), conditions.copy())
+            if result:
+                return result
         except:
             print("Error in url :" + i)
-        if result:
-            return result
+

@@ -15,14 +15,14 @@ use_conditions = [[],
                   [(None,
                     URIRef('http://purl.org/dc/terms/license'),
                     URIRef('http://purl.org/NET/rdflicense/MIT1.0')),
-                    (None,
+                   (None,
                     URIRef('http://www.w3.org/ns/dcat#theme'),
                     URIRef('http://dbpedia.org/resource/Disease_registry'))
-                  ],
+                   ],
                   [(None,
                     URIRef('http://www.w3.org/ns/dcat#mediaType'),
                     Literal('text/turtle'))]
-                 ]
+                  ]
 
 
 #Get fdp uri from node envir variable
