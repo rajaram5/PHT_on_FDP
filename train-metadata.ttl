@@ -1,7 +1,25 @@
-<https://rdf.biosemantics.org/trains/1> <http://www.ebi.ac.uk/swo/SWO_9001002> <https://rdf.biosemantics.org/trains/1clauses/1> .
+@prefix train-onto: <http://www.example.com/train-ontology-placeholder/> .
+
+<https://rdf.biosemantics.org/trains/1> a train-onto:Train.
+
+<https://rdf.biosemantics.org/trains/1> <http://www.ebi.ac.uk/swo/SWO_9001002> <https://rdf.biosemantics.org/trains/1/clauses/1>  .
 
 
 <https://rdf.biosemantics.org/trains/1/clauses/1>  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/ICO_0000057> .
 
 
 <https://rdf.biosemantics.org/trains/1/clauses/1>  <http://purl.org/dc/terms/description> "The aim of this train is to collect data for-profit research investigation" .
+
+
+<https://rdf.biosemantics.org/trains/1> train-onto:hasRequirement <https://rdf.biosemantics.org/trains/1/req/dataset>, <https://rdf.biosemantics.org/trains/1/req/distribution> .
+
+
+<https://rdf.biosemantics.org/trains/1/req/dataset> a train-onto:Requirement;
+<http://purl.obolibrary.org/obo/IAO_0000136> <http://www.w3.org/ns/dcat#Dataset>;
+<http://www.w3.org/ns/dcat#theme> <http://dbpedia.org/resource/Disease_registry> .
+
+
+<https://rdf.biosemantics.org/trains/1/req/distribution> a train-onto:Requirement;
+<http://purl.obolibrary.org/obo/IAO_0000136> <http://www.w3.org/ns/dcat#Distribution>;
+train-onto:dataAccessInterface train-onto:sparqlEndpoint .
+
