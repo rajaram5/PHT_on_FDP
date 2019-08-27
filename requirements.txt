@@ -1,2 +1,3 @@
 SPARQLWrapper
 rdflib
+requests
