@@ -8,7 +8,7 @@ import rdflib
 #Get fdp uri from node envir variable
 station_uri = os.environ.get("DATABASE_URI")
 if station_uri is None:
-    station_uri = "http://127.0.0.1:5000"
+    station_uri = "http://localhost:5000"
 else:
     station_uri = str(station_uri)
 

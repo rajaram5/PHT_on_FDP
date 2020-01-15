@@ -5,10 +5,10 @@
 <https://rdf.biosemantics.org/trains/1> <http://www.ebi.ac.uk/swo/SWO_9001002> <https://rdf.biosemantics.org/trains/1/clauses/1>  .
 
 
-<https://rdf.biosemantics.org/trains/1/clauses/1>  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/ICO_0000056> .
+<https://rdf.biosemantics.org/trains/1/clauses/1>  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.obolibrary.org/obo/ICO_0000057> .
 
 
-<https://rdf.biosemantics.org/trains/1/clauses/1>  <http://purl.org/dc/terms/description> "The aim of this train is to collect data for-profit research investigation" .
+<https://rdf.biosemantics.org/trains/1/clauses/1>  <http://purl.org/dc/terms/description> "The aim of this train is to collect data for profit" .
 
 
 <https://rdf.biosemantics.org/trains/1> train-onto:hasRequirement <https://rdf.biosemantics.org/trains/1/req/dataset>, <https://rdf.biosemantics.org/trains/1/req/distribution> .
