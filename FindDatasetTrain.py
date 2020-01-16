@@ -1,8 +1,5 @@
-from rdflib import URIRef, Literal
-from SPARQLWrapper import SPARQLWrapper, JSON
 import os
 import requests
-import rdflib
 
 
 #Get fdp uri from node envir variable
@@ -17,7 +14,7 @@ print("station_uri :" + station_uri)
 # Read train requirement
 train_metadata = open('train-metadata.ttl', 'r').read()
 
-# Get SPARQL endpoint matches the condition
+# Get datasets matches the conditions
 url = station_uri + "/getDataset"
 response = requests.post(url,data = train_metadata)
 output = response.text
